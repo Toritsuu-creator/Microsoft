@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALERTE - Virus détecté</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: red;
+      color: white;
+      text-align: center;
+      margin-top: 100px;
+    }
+    .alert {
+      font-size: 24px;
+      font-weight: bold;
+      background-color: black;
+      padding: 20px;
+      border: 5px solid white;
+      margin: 20px;
+    }
+    .countdown {
+      font-size: 30px;
+      color: yellow;
+    }
+  </style>
+  <script>
+    let countdown = 10;
+    function updateCountdown() {
+      if (countdown <= 0) {
+        document.getElementById("message").innerHTML = "Votre ordinateur a été infecté ! La suppression des fichiers va commencer !";
+        document.getElementById("countdown").innerHTML = "Arrêt en cours...";
+        // Redirection vers une page de blague après un certain délai
+        setTimeout(function() {
+          window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";  // (Lien vers Rickroll !)
+        }, 5000);
+      } else {
+        document.getElementById("countdown").innerHTML = "Redémarrage dans : " + countdown + " secondes...";
+        countdown--;
+        setTimeout(updateCountdown, 1000);
+      }
+    }
+    window.onload = updateCountdown;
+  </script>
+</head>
+<body>
+  <div class="alert">
+    <p>ALERTE - Virus détecté !</p>
+    <p>Votre ordinateur est infecté par un virus. <br/> Veuillez patienter pendant que nous tentons de supprimer le virus.</p>
+    <p class="countdown" id="countdown">Redémarrage dans : 10 secondes...</p>
+    <p id="message">Nous tentons de réparer le système...</p>
+  </div>
+</body>
+</html>
